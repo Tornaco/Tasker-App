@@ -3,6 +3,7 @@
     package="dev.tornaco.tasker.app">
 
     <application
+        android:name="dev.tornaco.tasker.TaskerApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

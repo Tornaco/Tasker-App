@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Tasker-API-1.0-ALPHA">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/a6dcb8c30a1672871c2573d673a32fbc2a8e6867/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/a6dcb8c30a1672871c2573d673a32fbc2a8e6867/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

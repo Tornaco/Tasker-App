@@ -20,7 +20,7 @@ import dev.tornaco.tasker.service.ITaskerBridgeService;
 
 public class TaskerBridgeService extends Service implements ITaskerBridgeService {
 
-    private boolean taskDone;
+    private boolean mIsDestroyed;
 
     @Override
     public void onCreate() {
@@ -44,12 +44,17 @@ public class TaskerBridgeService extends Service implements ITaskerBridgeService
         Logger.d("onExecutorCreate: %s", executor.getSerial());
         String res = executor.execute(new ITask("pressHome", "ID", "Data"));
         Logger.d("pressHome: %s", res);
-        taskDone = true;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mIsDestroyed = true;
     }
 
     @Override
     public boolean shouldTerminate(ITaskExecutor executor) throws RemoteException {
-        return true;
+        return mIsDestroyed;
     }
 
     private class Bridge extends Stub {

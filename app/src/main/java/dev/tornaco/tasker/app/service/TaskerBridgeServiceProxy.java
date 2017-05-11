@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.IBinder;
 
 import dev.tornaco.tasker.service.ITaskerBridgeService;
+import dev.tornaco.tasker.service.ServiceProxy;
 
 /**
  * Created by Nick on 2017/5/9 17:23

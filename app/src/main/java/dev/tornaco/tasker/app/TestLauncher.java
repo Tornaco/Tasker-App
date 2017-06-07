@@ -1,23 +1,18 @@
 package dev.tornaco.tasker.app;
 
-import android.content.Context;
-
 import dev.tornaco.tasker.app.utils.Enforcer;
+import dev.tornaco.tasker.test.UnitTest;
 
 /**
  * Created by Nick on 2017/5/9 17:39
  * E-Mail: Tornaco@163.com
  * All right reserved.
  */
-class Launcher {
+class TestLauncher {
 
-    static void launch(Context context) {
-        Enforcer.enforceWorkerThread("Launcher#launch");
-        Enforcer.enforceRoot().runCommand(launcherCommand());
-    }
-
-    private static String launcherCommand() {
-        return testsCmd("dev.tornaco.tasker.Launcher", "start", "dev.tornaco.tasker");
+    static void launch(UnitTest test) {
+        Enforcer.enforceWorkerThread("TestLauncher#launch");
+        Enforcer.enforceRoot().runCommand(testsCmd(test.getClz(), test.getMethod(), test.getTestPkg()));
     }
 
     private static String testsCmd(String clz, String method, String testPkg) {

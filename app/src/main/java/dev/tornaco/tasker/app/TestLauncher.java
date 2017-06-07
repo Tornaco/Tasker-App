@@ -1,6 +1,11 @@
 package dev.tornaco.tasker.app;
 
+import org.newstand.logger.Logger;
+
+import java.util.concurrent.Executor;
+
 import dev.tornaco.tasker.app.utils.Enforcer;
+import dev.tornaco.tasker.app.utils.SharedExecutor;
 import dev.tornaco.tasker.test.UnitTest;
 
 /**
@@ -10,12 +15,28 @@ import dev.tornaco.tasker.test.UnitTest;
  */
 class TestLauncher {
 
+    static void launchAsync(final UnitTest test) {
+        launchAsync(test, SharedExecutor.getService());
+    }
+
+    static void launchAsync(final UnitTest test, Executor executor) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                launch(test);
+            }
+        });
+    }
+
     static void launch(UnitTest test) {
         Enforcer.enforceWorkerThread("TestLauncher#launch");
-        Enforcer.enforceRoot().runCommand(testsCmd(test.getClz(), test.getMethod(), test.getTestPkg()));
+        String testCmd = testsCmd(test.getClz(), test.getMethod(), test.getTestPkg());
+        Logger.i("Running command: %s", testCmd);
+        Enforcer.enforceRoot().runCommand(testCmd);
     }
 
     private static String testsCmd(String clz, String method, String testPkg) {
-        return String.format("am instrument -w -r -e debug false -e class %s#%s %s/android.support.test.runner.AndroidJUnitRunner", clz, method, testPkg);
+        return String.format("am instrument -w -r -e debug false -e class %s#%s %s/android.support.test.runner.AndroidJUnitRunner",
+                clz, method, testPkg);
     }
 }

@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import dev.tornaco.tasker.test.UnitTest;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
+
+                    TestLauncher.launchAsync(new UnitTest("dev.tornaco.tasker.module", "dev.tornaco.tasker.module.ExampleModule", "pressHome"));
                     return true;
             }
             return false;

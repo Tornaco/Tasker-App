@@ -122,10 +122,11 @@ public abstract class ModulePackageLoader {
                 moduleList = PackageModuleParser.parse(content);
             } catch (Throwable throwable) {
                 Logger.e(throwable, "Fail parse module list");
+                return null;
             }
-            if (moduleList != null) {
+            if (moduleList != null && moduleList.size() > 0) {
                 for (Module m : moduleList) {
-                    Logger.i("Found module:%s", m);
+                    Logger.i("This package has module:%s", m);
                 }
             } else {
                 Logger.d("No module defined in module list, ignore this package");

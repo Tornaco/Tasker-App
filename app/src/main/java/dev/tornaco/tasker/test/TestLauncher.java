@@ -1,5 +1,6 @@
 package dev.tornaco.tasker.test;
 
+import com.chrisplus.rootmanager.container.Result;
 import com.google.gson.Gson;
 
 import org.newstand.logger.Logger;
@@ -34,7 +35,8 @@ public class TestLauncher {
         Enforcer.enforceWorkerThread("TestLauncher#launch");
         String testCmd = testsCmd(test.getClz(), test.getMethod(), test.getTestPkg());
         Logger.i("Running command: %s", testCmd);
-        Enforcer.enforceRoot().runCommand(testCmd);
+        Result r = Enforcer.enforceRoot().runCommand(testCmd);
+        Logger.d("Runner result:%s", r.getMessage());
     }
 
     private static String testsCmd(String clz, String method, String testPkg) {

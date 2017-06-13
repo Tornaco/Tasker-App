@@ -1,18 +1,23 @@
 package dev.tornaco.tasker.app.adapter;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import org.newstand.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import dev.tornaco.tasker.app.R;
+import dev.tornaco.tasker.common.Consumer;
 import dev.tornaco.tasker.test.Module;
 import dev.tornaco.tasker.test.TestLauncher;
+import dev.tornaco.tasker.utils.Collections;
 
 /**
  * Created by Nick on 2017/6/13 13:55
@@ -44,7 +49,12 @@ public class ModuleAdapter extends RecyclerView.Adapter<TwoLinesViewHolder> {
     public void update(Collection<Module> src) {
         synchronized (modulePackageList) {
             modulePackageList.clear();
-            modulePackageList.addAll(src);
+            Collections.consumeRemaining(src, new Consumer<Module>() {
+                @Override
+                public void accept(@Nullable Module module) {
+                    if (module != null) modulePackageList.add(module);
+                }
+            });
         }
         triggerUpdate();
     }
@@ -65,6 +75,7 @@ public class ModuleAdapter extends RecyclerView.Adapter<TwoLinesViewHolder> {
     }
 
     protected void onBindViewHolder(TwoLinesViewHolder holder, final Module module) {
+        Logger.d("onBindViewHolder:%s", module);
         holder.getLineOneTextView().setText(module.getTitle());
         holder.getLineTwoTextView().setText(module.getDescription());
     }

@@ -1,25 +1,26 @@
-package dev.tornaco.tasker.app;
+package dev.tornaco.tasker.test;
+
+import com.google.gson.Gson;
 
 import org.newstand.logger.Logger;
 
 import java.util.concurrent.Executor;
 
-import dev.tornaco.tasker.app.utils.Enforcer;
-import dev.tornaco.tasker.app.utils.SharedExecutor;
-import dev.tornaco.tasker.test.UnitTest;
+import dev.tornaco.tasker.utils.Enforcer;
+import dev.tornaco.tasker.utils.SharedExecutor;
 
 /**
  * Created by Nick on 2017/5/9 17:39
  * E-Mail: Tornaco@163.com
  * All right reserved.
  */
-class TestLauncher {
+public class TestLauncher {
 
-    static void launchAsync(final UnitTest test) {
+    public static void launchAsync(final Module test) {
         launchAsync(test, SharedExecutor.getService());
     }
 
-    static void launchAsync(final UnitTest test, Executor executor) {
+    public static void launchAsync(final Module test, Executor executor) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -28,7 +29,8 @@ class TestLauncher {
         });
     }
 
-    static void launch(UnitTest test) {
+    public static void launch(Module test) {
+        Logger.d("launch module:%s", new Gson().toJson(test));
         Enforcer.enforceWorkerThread("TestLauncher#launch");
         String testCmd = testsCmd(test.getClz(), test.getMethod(), test.getTestPkg());
         Logger.i("Running command: %s", testCmd);

@@ -21,6 +21,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".PackageModulesViewerActivity" />
+
         <service android:name=".service.PackageObserveService" />
     </application>
 

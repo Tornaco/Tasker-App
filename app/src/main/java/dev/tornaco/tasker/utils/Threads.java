@@ -1,4 +1,4 @@
-package dev.tornaco.tasker.app.utils;
+package dev.tornaco.tasker.utils;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

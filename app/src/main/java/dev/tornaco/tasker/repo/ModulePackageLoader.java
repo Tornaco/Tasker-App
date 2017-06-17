@@ -24,6 +24,7 @@ import dev.tornaco.tasker.protocal.Constants;
 import dev.tornaco.tasker.test.Module;
 import dev.tornaco.tasker.test.ModulePackage;
 import dev.tornaco.tasker.test.PackageModuleParser;
+import dev.tornaco.tasker.utils.ApkUtil;
 import dev.tornaco.tasker.utils.Collections;
 import dev.tornaco.tasker.utils.Enforcer;
 import dev.tornaco.tasker.utils.SharedExecutor;
@@ -135,7 +136,7 @@ public abstract class ModulePackageLoader {
             // noinspection ResultOfMethodCallIgnored
             new File(newPath).delete();
 
-            return new ModulePackage(pkg, packageTitle, packageDesc, moduleList);
+            return new ModulePackage(pkg, packageTitle, packageDesc, moduleList, ApkUtil.loadIconByPkgName(context, pkg));
         } catch (PackageManager.NameNotFoundException e) {
             Logger.e(e, "Fail getApplicationInfo for %s", pkg);
             return null;

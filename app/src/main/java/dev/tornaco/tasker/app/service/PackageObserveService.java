@@ -53,7 +53,7 @@ public class PackageObserveService extends Service {
         ModulePackage modulePackage = ModulePackageLoader.loadModulePackageFrom(this, pkg);
         if (modulePackage != null) {
             // Send notification.
-            NotificationMachine.buildNotification(getApplicationContext(), "Module installed", "Click to see details", 0);
+            // NotificationMachine.buildNotification(getApplicationContext(), "Module installed", "Click to see details", 0);
         }
     }
 

@@ -76,6 +76,7 @@ public class ModulePackageAdapter extends RecyclerView.Adapter<TwoLinesViewHolde
     protected void onBindViewHolder(TwoLinesViewHolder holder, final ModulePackage modulePackage) {
         holder.getLineOneTextView().setText(modulePackage.getPackageTitle());
         holder.getLineTwoTextView().setText(modulePackage.getPackageDescription());
+        holder.getImageView().setImageDrawable(modulePackage.getIcon());
     }
 
     @Override

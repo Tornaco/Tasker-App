@@ -1,5 +1,7 @@
 package dev.tornaco.tasker.test;
 
+import android.graphics.drawable.Drawable;
+
 import java.util.ArrayList;
 
 /**
@@ -12,13 +14,14 @@ public class ModulePackage {
     private String packageTitle;
     private String packageDescription;
     private ArrayList<Module> modules;
+    private Drawable icon;
 
-    public ModulePackage(String pkgName, String packageTitle,
-                         String packageDescription, ArrayList<Module> modules) {
+    public ModulePackage(String pkgName, String packageTitle, String packageDescription, ArrayList<Module> modules, Drawable icon) {
         this.pkgName = pkgName;
         this.packageTitle = packageTitle;
         this.packageDescription = packageDescription;
         this.modules = modules;
+        this.icon = icon;
     }
 
     @Override
@@ -61,5 +64,13 @@ public class ModulePackage {
 
     public void setModules(ArrayList<Module> modules) {
         this.modules = modules;
+    }
+
+    public void setIcon(Drawable icon) {
+        this.icon = icon;
+    }
+
+    public Drawable getIcon() {
+        return icon;
     }
 }

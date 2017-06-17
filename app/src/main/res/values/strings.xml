@@ -1,6 +1,11 @@
 <resources>
-    <string name="app_name">Tasker-App</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name">自动化</string>
+    <string name="title_home">模块包</string>
+    <string name="title_howto">说明</string>
+    <string name="title_settings">配置</string>
+    <string name="title_activity_navigator">自动化</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
 </resources>

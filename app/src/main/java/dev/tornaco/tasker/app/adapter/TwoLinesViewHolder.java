@@ -17,13 +17,13 @@ public class TwoLinesViewHolder extends RecyclerView.ViewHolder {
 
     private TextView lineTwoTextView;
 
-    private ImageView checkableImageView;
+    private ImageView imageView;
 
     public TwoLinesViewHolder(View itemView) {
         super(itemView);
         lineOneTextView = (TextView) itemView.findViewById(android.R.id.title);
         lineTwoTextView = (TextView) itemView.findViewById(android.R.id.text1);
-        checkableImageView = (ImageView) itemView.findViewById(R.id.icon);
+        imageView = (ImageView) itemView.findViewById(R.id.icon);
     }
 
     public TextView getLineOneTextView() {
@@ -34,7 +34,7 @@ public class TwoLinesViewHolder extends RecyclerView.ViewHolder {
         return lineTwoTextView;
     }
 
-    public ImageView getCheckableImageView() {
-        return checkableImageView;
+    public ImageView getImageView() {
+        return imageView;
     }
 }

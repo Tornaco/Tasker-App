@@ -7,23 +7,24 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".PackageModulesViewerActivity" />
+
+        <service android:name=".service.PackageObserveService" />
+        <service android:name=".service.InstrumentationLauncherService" />
 
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:name="dev.tornaco.tasker.NavigatorActivity"
+            android:label="@string/title_activity_navigator"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".PackageModulesViewerActivity" />
-
-        <service android:name=".service.PackageObserveService" />
     </application>
 
 </manifest>
